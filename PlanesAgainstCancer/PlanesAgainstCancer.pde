@@ -1,10 +1,20 @@
+Population pop = new Population();
+
+final int SHIP_AMT = 100;
+
 void setup()
 {
   size(500, 800);
   surface.setTitle("Bots Vs. Cancer");
   surface.setResizable(true);
+  
+  for(int i = 0; i < SHIP_AMT; i++)
+  {
+    pop.addShip(new Ship());
+  }
+  
+  
 }
-
 
 void draw()
 {
