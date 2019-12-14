@@ -3,7 +3,7 @@ Population ships;
 Goal goal;
 Ship bestShip, player;
 Obstacles obstacles;
-int shipsReached = 0, generation = 0, numOfShips = 10, bestTime = 999, shipsAlive = numOfShips;
+int shipsReached = 0, generation = 0, numOfShips = 100, bestTime = 999, shipsAlive = numOfShips;
 boolean start = false, mouseReleased = false;
 boolean [] keys;
 color backColor;

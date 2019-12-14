@@ -1,3 +1,4 @@
+
 class Ship{
   PShape body, triangle, tail, line1, line2; //shape of the ship (triangle)
   PVector location = new PVector (width/2, height/2);

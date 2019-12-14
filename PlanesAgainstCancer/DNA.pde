@@ -37,7 +37,8 @@ class DNA
   
   public void randomize(float[] genes)
   {
-    for(int i = 0; i < genes.length; i++)
+    genes[0] = random(2);
+    for(int i = 1; i < genes.length; i++)
     {
       genes[i] = random(4) - 2;
     }
