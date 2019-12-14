@@ -93,6 +93,7 @@ class DrawnObject
   
   public float getTheta() { return theta; }
   public void setTheta(float theta) { this.theta = theta; }
+  public void rot(float dTheta) { this.theta += dTheta; }
   
   public PShape getShape() { return shape; }
   public void setShape(PShape shape) { this.shape = shape; }

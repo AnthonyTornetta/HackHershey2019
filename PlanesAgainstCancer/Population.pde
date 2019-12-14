@@ -29,6 +29,11 @@ class Population
   
   public void addShip(Ship ship) { population.add(ship); }
   
+  public Ship getShip(int i) { return population.get(i); }
+  
+  public int getSize() { return population.size(); }
+  public void remove(int index) { population.remove(index); }
+  
   public List<Ship> getPopulation() { return population; }
   public void setPopulation(List<Ship> population) { this.population = population; }
 }
