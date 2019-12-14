@@ -16,6 +16,8 @@ class DrawnObject
     theta = 0.0;
     
     c = #aaaaaa;
+    
+    println("ASDASDADS");
     shape = createShape(RECT, position.x, position.y, 10, 10);
   }
   
@@ -41,6 +43,7 @@ class DrawnObject
     this.c = c;
     
     fill(c);
+    println("ASDASDADS");
     this.shape = createShape(ELLIPSE, 0, 0, r, r);
   }
   
