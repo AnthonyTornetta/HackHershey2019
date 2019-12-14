@@ -8,9 +8,4 @@ class Obstacle extends DrawnObject
     this.w = w;
     this.h = h;
   }
-  
-  public float getX() { return x; }
-  public float getY() { return y; }
-  public float getWidth() { return w; }
-  public float getHeight() {return h; }
 }
