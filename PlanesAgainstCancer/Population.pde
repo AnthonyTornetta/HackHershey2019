@@ -32,6 +32,7 @@ class Population
   
   public void kill(int index)
   {
+    println("called");
     addDead(population.remove(index));
   }
   

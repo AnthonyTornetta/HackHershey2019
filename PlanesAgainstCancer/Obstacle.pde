@@ -4,6 +4,9 @@ class Obstacle extends DrawnObject
   public Obstacle(float x, float y, float w, float h, color c)
   {
     super(new PVector(x, y), createShape(RECT, 0, 0, w, h), c);
+    
+    this.w = w;
+    this.h = h;
   }
 
   // Returns where they are colliding or null if not

@@ -27,7 +27,10 @@ class Obstacles
     }
     else if(clickCounter == 2)
     {
-      obstacleList.add(new Obstacle(tempX, tempY, x - tempX, y - tempY, 255));
+      boolean badX = tempX > x;
+      boolean badY = tempY > y;
+      
+      obstacleList.add(new Obstacle(badX ? x : tempX, badY ? y : tempY, badX ? tempX - x : x - tempX, badY ? tempY - y : y - tempY, 255));
       clickCounter = 0;
       print("New Obstacle! ");
       println(obstacleList.size());
