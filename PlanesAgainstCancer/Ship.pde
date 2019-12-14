@@ -1,10 +1,11 @@
 class Ship extends DrawnObject
 {
   private DNA dna;
+  private int h = 15, w = 20;
   
   public Ship(float x, float y, color c)
   {
-    super(new PVector(x, y), createShape(TRIANGLE,  0, -20, -10, 15, 10, 15), c);
+    super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), c);
     dna = new DNA();
   }
   
@@ -36,7 +37,7 @@ class Ship extends DrawnObject
   int getGeneIndex(Obstacle o)
   {
     ArrayList<PVector> corners = new ArrayList<PVector>();
-    PVector centerPoint = new PVector(position.x, position.y + h);
+    PVector centerPoint = new PVector(getX(), getY() + h);
     int radius = 50; //Variable
     
     for(int i = 0; i < 4; i++)
@@ -69,7 +70,7 @@ class Ship extends DrawnObject
     {
       for(int dy = 0; dy <= 1; dy++)
       {
-        PVector vec = lineIntersection(position.x, position.y, position.x + w * dx, position.y + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
+        PVector vec = lineIntersection(getX(), getY(), getX() + w * dx, getY() + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
         if(vec != null)
           return vec;
       }
