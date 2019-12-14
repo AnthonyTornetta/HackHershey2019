@@ -65,11 +65,10 @@ class DrawnObject
     translate(position.x, position.y);
     rotate(radians(theta));
     shapeMode(CENTER);
+    fill(c);
     shape(shape, 0, 0);
     popMatrix();
   }
-  
-  
   
   public PVector getPosistion() { return position; }
   public void setPosition(PVector position) { this.position = position; }
