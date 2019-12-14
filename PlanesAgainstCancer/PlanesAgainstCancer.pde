@@ -5,8 +5,8 @@ void setup()
 
 void draw()
 {
-  background(0, 0, 0);
+  background(150, 30, 30);
   
-  fill(255, 0, 0);
+  fill(200, 200, 200);
   rect(0, 0, 100, 100);
 }
