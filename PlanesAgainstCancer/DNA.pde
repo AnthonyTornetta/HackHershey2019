@@ -42,11 +42,11 @@ class DNA
   
   public void randomize(float[] genes)
   {
-    genes[0] = random(.1);
-    genes[1] = random(.4) + 0.005;
+    genes[0] = 1;
+    genes[1] = 1;//random(.2) + 0.005;
     for(int i = SENSOR_OFFSET; i < genes.length; i++)
     {
-      genes[i] = random(50) - 25;
+      genes[i] = random(30) - 15;
     }
   }
   
