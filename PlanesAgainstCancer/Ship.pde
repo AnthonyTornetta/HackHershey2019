@@ -54,6 +54,13 @@ class Ship extends DrawnObject
   
   int getGeneIndex(Obstacle o)
   {
+    for(int i = 0; i < 4; i++){
+      o.returnCorners(i);
+      ///
+    }
+    ///////////////
     return 0; // TODO: jose
   }
+  
+  
 }
