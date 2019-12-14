@@ -1,6 +1,6 @@
 class DrawnObject
 {
-  PVector position;
+  private PVector position;
   
   void update()
   {
