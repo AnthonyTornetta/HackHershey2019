@@ -3,7 +3,7 @@ Obstacles obs = new Obstacles();
 
 Goal gul; 
 
-color shipColor = color(0, 0, 255);
+color shipColor = color(0, 0, 0);
 color goalColor = color(0, 255, 0);
 color obstacleColor = color(255, 0, 0);
 
@@ -15,14 +15,14 @@ void setup()
   surface.setTitle("Bots Vs. Cancer");
   surface.setResizable(true);
  
+  gul = new Goal(width / 2, 100, 25, goalColor);
   
-  fill(goalColor);
-  gul = new Goal(width / 2, 100, 25, #eeeeee);
-  
-  fill(shipColor);
+  int c = 0;
   for(int i = 0; i < SHIP_AMT; i++)
   {
+    shipColor = color(c);
     pop.addShip(new Ship(width / 2, height / 2));
+    c += 2;
   }
   
   Obstacle ob = new Obstacle(0, 0, 100, 100, 0);

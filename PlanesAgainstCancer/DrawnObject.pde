@@ -15,12 +15,11 @@ class DrawnObject
     acceleration = new PVector();
     theta = 0.0;
         
-    c = #ffff00;
-    fill(c);
+    c = #aaaaaa;
     shape = createShape(RECT, position.x, position.y, 10, 10);
   }
   
-  public DrawnObject(PVector position, PShape shape, color c)
+  public DrawnObject(PVector position, PShape s, color c)
   {
     this.position = position;
     velocity = new PVector();
@@ -28,8 +27,55 @@ class DrawnObject
     theta = 0.0;
     
     this.c = c;
+    this.shape = s;
+  }
+  
+  public DrawnObject(PVector position, float r, color c)
+  {
+    println("asdf");
+    this.position = position;
+    velocity = new PVector();
+    acceleration = new PVector();
+    theta = 0.0;
+    
+    this.c = c;
+    
     fill(c);
-    this.shape = shape;
+    this.shape = createShape(ELLIPSE, 0, 0, r, r);
+  }
+  
+  public DrawnObject(PVector position, float w, float h, color c, ShapeType s)
+  {
+    this.position = position;
+    velocity = new PVector();
+    acceleration = new PVector();
+    theta = 0.0;
+ 
+    this.c = c;
+    
+    fill(c);
+    if(s == ShapeType.rectangle)
+    {
+      this.shape = createShape(RECT, 0, 0, w, h);
+    }
+    else
+    {
+      this.shape = createShape(TRIANGLE,  0, 0, -w/2, h, w/2, h);
+    }
+  }
+  
+  public DrawnObject(PVector position, float w, float h, color c)
+  {
+    println("asdf");
+    this.position = position;
+    velocity = new PVector();
+    acceleration = new PVector();
+    theta = 0.0;
+    
+    this.c = c;
+    
+    fill(c);
+    this.shape = createShape(TRIANGLE,  0, 0, -10, 15, 10, 15);
   }
   
   public DrawnObject(PVector position, PVector velocity, float theta, PShape shape, color c)
@@ -40,7 +86,6 @@ class DrawnObject
     this.theta = theta;
     
     this.c = c;
-    fill(c);
     this.shape = shape;
 
   }
@@ -53,7 +98,6 @@ class DrawnObject
     this.theta = theta;
     
     this.c = c;
-    fill(c);
     this.shape = shape;
 
   }
@@ -71,7 +115,6 @@ class DrawnObject
     translate(position.x, position.y);
     rotate(radians(theta));
     shapeMode(CENTER);
-    //fill(c);
     shape(shape, 0, 0);
     popMatrix();
   }
