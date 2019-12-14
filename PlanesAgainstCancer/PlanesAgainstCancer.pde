@@ -40,8 +40,6 @@ void setup()
 //   }
 //}
 
-ArrayList<Ship> deadShips = new ArrayList<Ship>();
-
 void draw()
 {
   background(150, 30, 30);
@@ -72,8 +70,7 @@ void draw()
       {
         if(ship.getY() >= o.getY() && ship.getY() <= o.getY() + o.getHeight())
         {
-          deadShips.add(ship);
-          pop.remove(i);
+          pop.kill(i);
           i--;
         }
       }
