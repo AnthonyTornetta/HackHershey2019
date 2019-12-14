@@ -1,18 +1,29 @@
 class Ship extends DrawnObject
 {
-  float w, h;
+  private float w, h;
   private DNA dna;
-  private int h = 15, w = 20;
   
    public Ship()
   {
     super(new PVector(width/2, height - 100), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    w = 20;
+    h = 15;
     dna = new DNA();
   }
   
   public Ship(float x, float y)
   {
     super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    w = 20;
+    h = 15;
+    dna = new DNA();
+  }
+  
+  public Ship(float x, float y, float w, float h)
+  {
+    super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -w/2, h, w/2, h), 255);
+    this.w = w;
+    this.h = h;
     dna = new DNA();
   }
   
