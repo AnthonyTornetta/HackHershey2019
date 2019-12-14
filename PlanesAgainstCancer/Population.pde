@@ -3,6 +3,7 @@ import java.util.List;
 class Population
 {
   private List<Ship> population = new ArrayList();
+  private List<Ship> deadShips = new ArrayList<Ship>();
   
   public Population(List<Ship> population)
   {
@@ -14,9 +15,24 @@ class Population
     this.population = new ArrayList();
   }
   
-  public int numShips()
+  public int numDead()
   {
-    return population.size();
+    return deadShips.size();
+  }
+  
+  public void remove(int index)
+  {
+    population.remove(index);
+  }
+  
+  public void addDead(Ship ship)
+  {
+    deadShips.add(ship);
+  }
+  
+  public void kill(int index)
+  {
+    addDead(population.remove(index));
   }
   
   public void show()
@@ -27,13 +43,17 @@ class Population
     }
   }
   
+  
   public void addShip(Ship ship) { population.add(ship); }
   
   public Ship getShip(int i) { return population.get(i); }
   
   public int getSize() { return population.size(); }
-  public void remove(int index) { population.remove(index); }
+
   
   public List<Ship> getPopulation() { return population; }
   public void setPopulation(List<Ship> population) { this.population = population; }
+  
+  public List<Ship> getDead() { return deadShips; }
+  public void setDead(List<Ship> deadShips) { this.deadShips = deadShips; }
 }
