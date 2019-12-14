@@ -88,7 +88,7 @@ void draw()
             i--;
             
             if(pop.getSize() <= 0){
-              //pop = pop.sexyTime();
+              pop = new Population(pop.sexyTime());
             }
           }
         }
