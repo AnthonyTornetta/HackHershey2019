@@ -1,5 +1,7 @@
 class DrawnObject
 {
+  PVector position;
+  
   void update()
   {
     

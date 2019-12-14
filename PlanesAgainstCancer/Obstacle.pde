@@ -1,14 +1,12 @@
 class Obstacle extends DrawnObject
 {
-  float x, y;
   float w, h;
   
   public Obstacle(float x, float y, float w, float h)
   {
-    this.x = x;
-    this.h = h;
-    this.y = y;
+    position = new PVector(x, y);
     this.w = w;
+    this.h = h;
   }
   
   public float getX() { return x; }
