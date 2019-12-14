@@ -21,5 +21,21 @@ void draw()
   
   fill(200, 200, 200);
   
+  obs.show();
+  
+  for(TriangleShip ship : pop.getPopulation())
+  {
+    for(Obstacle o : obs.getObstacles())
+    {
+      int geneIndex = ship.getGeneIndex(o);
+      if(geneIndex != -1)
+      {
+        ship.addTheta(ship.getGene(geneIndex));
+      }
+    }
+    
+    ship.addVelMagnitude(ship.getGene(0));
+  }
+  
   pop.show();
 }
