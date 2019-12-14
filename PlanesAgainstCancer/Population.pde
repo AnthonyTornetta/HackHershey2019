@@ -42,12 +42,7 @@ class Population
       ship.show();
     }
   }
-<<<<<<< HEAD
 
-=======
-  
-  /*
->>>>>>> parent of 04c9a97... fixed sorting but with neg fitness
   public List<Ship> sexyTime(){
     List<Ship> newPop = new ArrayList<Ship>();
     List<Ship> sortedDeadShips = new ArrayList<Ship>();
@@ -68,8 +63,7 @@ class Population
 
     return newPop;
   }
-  */
-  /*
+
   public Ship pickAShip(List<Ship> list){
     float r = random(1);
     int index = 0;
@@ -83,17 +77,11 @@ class Population
 
   public List<Ship> sortByFitness(List<Ship> list){ //Sorts by Max Fitness
     List<Ship> sorted = new ArrayList<Ship>();
-<<<<<<< HEAD
 
     while(!list.isEmpty())
     {
       //Must have been a value less than 0.
       float max = -999;
-=======
-    
-    for(int i = 0; i < list.size(); i++){
-      float max = 0;
->>>>>>> parent of 04c9a97... fixed sorting but with neg fitness
       int index = -1;
       for(int j = 0; j < list.size(); j++){
         if(list.get(j).getMaxFitness() > max){
@@ -105,12 +93,7 @@ class Population
     }
     return sorted;
   }
-<<<<<<< HEAD
 
-=======
-  */
-  
->>>>>>> parent of 04c9a97... fixed sorting but with neg fitness
   public void addShip(Ship ship) { population.add(ship); }
 
   public Ship getShip(int i) { return population.get(i); }
