@@ -4,6 +4,7 @@ class DrawnObject
   private PVector velocity;
   private PVector acceleration;
   private float theta;
+  private ShapeType shape;
   
   public DrawnObject()
   {
@@ -11,40 +12,61 @@ class DrawnObject
     velocity = new PVector();
     acceleration = new PVector();
     theta = 0.0;
+    
+    shape = ShapeType.rectangle;
   }
   
-  public DrawnObject(PVector position)
+  public DrawnObject(PVector position, ShapeType shape)
   {
     this.position = position;
     velocity = new PVector();
     acceleration = new PVector();
     theta = 0.0;
+    
+    this.shape = shape;
   }
   
-  public DrawnObject(PVector position, PVector velocity, float theta)
+  public DrawnObject(PVector position, PVector velocity, ShapeType shape, float theta)
   {
     this.position = position;
     this.velocity = velocity;
     acceleration = new PVector();
     this.theta = theta;
+    
+    this.shape = shape;
   }
   
-  public DrawnObject(PVector position, PVector velocity, PVector acceleration, float theta)
+  public DrawnObject(PVector position, PVector velocity, PVector acceleration, ShapeType shape, float theta)
   {
     this.position = position;
     this.velocity = velocity;
     this.acceleration = acceleration;
     this.theta = theta;
+    
+    this.shape = shape;
   }
   
   void update()
   {
     velocity.mult(.95);
+    velocity.add(acceleration);
+    position.add(velocity);
   }
   
   void show()
   {
-    
+    if(shape == ShapeType.triangle)
+    {
+      
+    }
+    else if(shape == ShapeType.rectangle)
+    {
+      
+    }
+    else if(shape == ShapeType.circle)
+    {
+      
+    }
   }
   
   public PVector getPosistion() { return position; }
@@ -70,4 +92,7 @@ class DrawnObject
   
   public float getTheta() { return theta; }
   public void setTheta(float theta) { this.theta = theta; }
+  
+  public ShapeType getShape() { return shape; }
+  public void setShape(ShapeType shape) { this.shape = shape; }
 }
