@@ -30,7 +30,7 @@ class Obstacles
       boolean badX = tempX > x;
       boolean badY = tempY > y;
       
-      obstacleList.add(new Obstacle(badX ? x : tempX, badY ? y : tempY, badX ? tempX - x : x - tempX, badY ? tempY - y : y - tempY, 255));
+      obstacleList.add(new Obstacle(badX ? x : tempX, badY ? y : tempY, badX ? tempX - x : x - tempX, badY ? tempY - y : y - tempY, obstacleColor));
       clickCounter = 0;
       print("New Obstacle! ");
       println(obstacleList.size());

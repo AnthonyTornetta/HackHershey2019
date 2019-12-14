@@ -3,21 +3,46 @@ Obstacles obs = new Obstacles();
 
 Goal gul; 
 
+color shipColor = color(0, 0, 0);
+color goalColor = color(0, 255, 0);
+color obstacleColor = color(100, 100, 100);
+
 final int SHIP_AMT = 100;
 
 boolean started = false;
+float shipWidth = 15;
+float shipHeight = 20;
+float spawnX = 250;
+float spawnY = 400;
+  
+float goalRadius = 50;
+float goalX = 250;
+float goalY = 100;
 
 void setup()
 {
-  size(500, 500);
+  fullScreen();
+  
+  shipWidth = 15;
+  shipHeight = 20;
+  spawnX = width / 2;
+  spawnY =  3 * height / 4;
+  
+  goalRadius = 50;
+  goalX = width / 2;
+  goalY = height / 4;
+  
   surface.setTitle("Bots Vs. Cancer");
   surface.setResizable(true);
  
-  gul = new Goal(width / 2, 100, 25, #aaaaaa);
+  gul = new Goal(goalX, goalY, goalRadius, goalColor);
   
+  int c = 0;
   for(int i = 0; i < SHIP_AMT; i++)
   {
-    pop.addShip(new Ship(width / 2, height / 2));
+    shipColor = color(c);
+    pop.addShip(new Ship(spawnX, spawnY));
+    c += 2;
   }
   
   Obstacle ob = new Obstacle(0, 0, 100, 100, 0);
@@ -28,14 +53,13 @@ void draw()
 {
   background(150, 30, 30);
   
-  fill(200);
-  
   gul.show();
+  
+  
   obs.show();
   
   if(started)
   {
-  
     for(int i = 0; i < pop.getSize(); i++)
     {
       Ship ship = pop.getShip(i);
@@ -74,6 +98,7 @@ void draw()
   
   //pop.update();
   pop.show();
+
 }
 
 void keyPressed()

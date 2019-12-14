@@ -6,9 +6,9 @@ class Ship extends DrawnObject
   private int lifetime = 0;
   private static final int sightRadius = 50;
 
-   public Ship()
+  public Ship()
   {
-    super(new PVector(width / 2, height / 2), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    super(new PVector(width / 2, height / 2), shipWidth, shipHeight, shipColor, ShapeType.triangle);
     w = 20;
     h = 15;
     dna = new DNA();
@@ -23,7 +23,7 @@ class Ship extends DrawnObject
 
   public Ship(float x, float y)
   {
-    super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    super(new PVector(x, y), shipWidth, shipHeight, shipColor, ShapeType.triangle);
     w = 20;
     h = 15;
     dna = new DNA();
@@ -31,15 +31,10 @@ class Ship extends DrawnObject
 
   public Ship(float x, float y, float w, float h)
   {
-    super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -w/2, h, w/2, h), 255);
+    super(new PVector(width / 2, height / 2), shipWidth, shipHeight, shipColor, ShapeType.triangle);
     this.w = w;
     this.h = h;
     dna = new DNA();
-  }
-
-  public void show()
-  {
-    super.show();
   }
 
   public void edgeDetection()

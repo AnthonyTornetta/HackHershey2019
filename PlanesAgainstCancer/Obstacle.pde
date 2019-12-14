@@ -3,7 +3,7 @@ class Obstacle extends DrawnObject
   float w, h;
   public Obstacle(float x, float y, float w, float h, color c)
   {
-    super(new PVector(x, y), createShape(RECT, 0, 0, w, h), c);
+    super(new PVector(x, y), w, h, c, ShapeType.rectangle);
     
     this.w = w;
     this.h = h;
