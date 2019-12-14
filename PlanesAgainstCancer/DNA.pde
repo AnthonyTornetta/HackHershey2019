@@ -1,29 +1,20 @@
-class DNA
-{
-  public final static int DNA_LENGTH = 4;
+class DNA{
+  ArrayList<Integer> info = new ArrayList<Integer>();
   
-  float[] genes = new float[DNA_LENGTH];
-  
-  public DNA()
-  {
-    randomize(genes);
+  DNA(int life){ //Constructor
+    info = randomize(life);
   }
   
-  public DNA(float[] genes)
-  {
-    this.genes = genes;
+  DNA(ArrayList<Integer> newInfo){
+    info = newInfo;
   }
   
-  public void randomize(float[] genes)
-  {
-    for(int i = 0; i < genes.length; i++)
-    {
-      genes[i] = random(4) - 2;
-    }
-  }
-  
-  public float getGene(int index)
-  {
-    return genes[index];
-  }
+  ArrayList<Integer> randomize(int n){
+    ArrayList<Integer> newInfo = new ArrayList<Integer>();
+    
+    for(int i = 0; i < n; i++)
+      newInfo.add(floor(random(4)));
+      
+    return newInfo;
+  } 
 }
