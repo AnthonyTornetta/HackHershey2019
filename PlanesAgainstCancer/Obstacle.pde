@@ -44,6 +44,16 @@ class Obstacle extends DrawnObject
     rect(position.x, position.y, w, h);    
   }  
   
+  PVector returnCorners(int corner){
+    switch(corner){
+      case 0: return new PVector(position.x, position.y);
+      case 1: return new PVector(position.x, position.y + h);
+      case 2: return new PVector(position.x + w, position.y);
+      case 3: return new PVector(position.x + w, position.y + h);
+      default: return new PVector(0,0);
+    }
+  }
+  
   public float getX() { return position.x; }
   public float getY() { return position.y; }
   public float getWidth() { return w; }

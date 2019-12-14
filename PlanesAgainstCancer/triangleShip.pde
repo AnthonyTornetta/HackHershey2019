@@ -46,4 +46,8 @@ class TriangleShip
     if(position.y < 0)
       position.y = height;
   }
+  
+  void checkCollision(){
+    
+  }
 }

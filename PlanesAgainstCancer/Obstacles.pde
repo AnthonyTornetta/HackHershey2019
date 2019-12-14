@@ -17,6 +17,7 @@ class Obstacles
   
   void drawObstacles(int x, int y)
   {
+    
     clickCounter++;
     
     if(clickCounter == 1)
@@ -33,4 +34,15 @@ class Obstacles
       println(numOfObstacles);
     }
   }
+  
+  ArrayList<PVector> returnObstacleCorners(){
+    ArrayList<PVector> corners = new ArrayList<PVector>();
+    for(Obstacle temp: obstacleList){
+      for(int i = 0; i < 4; i++){
+        corners.add(temp.returnCorners(i));  //Should work???
+      }
+    }
+    return corners;  //Check later
+  }
+  
 }
