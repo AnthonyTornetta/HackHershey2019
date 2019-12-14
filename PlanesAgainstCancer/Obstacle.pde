@@ -1,6 +1,6 @@
 class Obstacle extends DrawnObject
 {
-  PVector location = new PVector();
+  PVector position = new PVector();
   float w, h;
 
   public Obstacle(float x, float y, float w, float h)
@@ -17,7 +17,7 @@ class Obstacle extends DrawnObject
     {
       for(int dy = 0; dy <= 1; dy++)
       {
-        PVector vec = lineIntersection(location.x, location.y, location.x + w * dx, location.y + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
+        PVector vec = lineIntersection(position.x, position.y, position.x + w * dx, position.y + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
         if(vec != null)
           return vec;
       }
@@ -43,11 +43,11 @@ class Obstacle extends DrawnObject
   void show(){
     fill(255);
     stroke(255);
-    rect(location.x, location.y, w, h);    
+    rect(position.x, position.y, w, h);    
   }  
   
-  public float getX() { return location.x; }
-  public float getY() { return location.y; }
+  public float getX() { return position.x; }
+  public float getY() { return position.y; }
   public float getWidth() { return w; }
   public float getHeight() {return h; }
 }

@@ -23,18 +23,14 @@ class Obstacles
     {
       tempX = x;
       tempY = y;
-      //backColor = color(0, 100, 0);
     }
     else if(clickCounter == 2)
     {
       obstacleList.add(new Obstacle(tempX, tempY, x - tempX, y - tempY));
       clickCounter = 0;
       numOfObstacles++;
-      //backColor = color(0);
       print("New Obstacle! ");
       println(numOfObstacles);
-      //bestTime = 999;
-      //obstacleList = sortByHeight();
     }
   }
 }
