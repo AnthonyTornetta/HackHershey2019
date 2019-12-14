@@ -42,6 +42,4 @@ class Obstacle extends DrawnObject
   public float getY() { return y; }
   public float getWidth() { return w; }
   public float getHeight() {return h; }
-  
-  
 }
