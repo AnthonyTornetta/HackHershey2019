@@ -1,6 +1,3 @@
-import java.awt.geom.*;
-import java.awt.*;
-
 Population pop = new Population();
 Obstacles obs = new Obstacles();
 
@@ -14,7 +11,7 @@ void setup()
   
   for(int i = 0; i < SHIP_AMT; i++)
   {
-    pop.addShip(new Ship(width / 2, height - 50, #ffffff));
+    pop.addShip(new Ship(width / 2, height - 50));
   }
 }
 
