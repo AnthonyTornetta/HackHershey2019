@@ -56,6 +56,17 @@ class Ship extends DrawnObject
   {
     return dna.getGene(index);
   }
+  
+  public void show()
+  {
+    pushMatrix();
+    translate(getX(), getY() + h / 2);
+    rotate(radians(getTheta()));
+    translate(0, -h / 2);
+    shapeMode(CENTER);
+    shape(getShape(), 0, 0);
+    popMatrix();
+  }
 
   int getGeneIndex(Obstacle o)
   {
@@ -73,7 +84,7 @@ class Ship extends DrawnObject
       if(good != null)
       {
         println(endPoints[i]);
-        return i + 1;
+        return i + DNA.SENSOR_OFFSET;
       }
     }
     

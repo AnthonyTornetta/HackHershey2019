@@ -2,7 +2,7 @@ class DrawnObject
 {
   private PVector position;
   private PVector velocity;
-  private PVector acceleration;
+  private float accel;
   private float theta;
   
   private PShape shape;
@@ -12,9 +12,9 @@ class DrawnObject
   {
     position = new PVector();
     velocity = new PVector();
-    acceleration = new PVector();
+    accel = 0;
     theta = 0.0;
-        
+    
     c = #aaaaaa;
     shape = createShape(RECT, position.x, position.y, 10, 10);
   }
@@ -23,7 +23,7 @@ class DrawnObject
   {
     this.position = position;
     velocity = new PVector();
-    acceleration = new PVector();
+    accel = 0;
     theta = 0.0;
     
     this.c = c;
@@ -35,7 +35,7 @@ class DrawnObject
     println("asdf");
     this.position = position;
     velocity = new PVector();
-    acceleration = new PVector();
+    accel = 0;
     theta = 0.0;
     
     this.c = c;
@@ -48,7 +48,7 @@ class DrawnObject
   {
     this.position = position;
     velocity = new PVector();
-    acceleration = new PVector();
+    accel = 0;
     theta = 0.0;
  
     this.c = c;
@@ -69,7 +69,7 @@ class DrawnObject
     println("asdf");
     this.position = position;
     velocity = new PVector();
-    acceleration = new PVector();
+    accel = 0;
     theta = 0.0;
     
     this.c = c;
@@ -82,7 +82,7 @@ class DrawnObject
   {
     this.position = position;
     this.velocity = velocity;
-    acceleration = new PVector();
+    accel = 0;
     this.theta = theta;
     
     this.c = c;
@@ -90,11 +90,11 @@ class DrawnObject
 
   }
   
-  public DrawnObject(PVector position, PVector velocity, PVector acceleration, float theta, PShape shape, color c)
+  public DrawnObject(PVector position, PVector velocity, float acceleration, float theta, PShape shape, color c)
   {
     this.position = position;
     this.velocity = velocity;
-    this.acceleration = acceleration;
+    accel = acceleration;
     this.theta = theta;
     
     this.c = c;
@@ -104,12 +104,36 @@ class DrawnObject
   
   public void update(float maxVel)
   {
-    //velocity.mult(.95);
-    velocity.add(acceleration);
-    if(getVelX() > maxVel)
-      setVelX(maxVel);
-    if(getVelY() > maxVel)
-      setVelY(maxVel);
+    println(getAccelerationComps());
+    velocity = getAccelerationComps();
+    //velocity.add(acceleration);
+    
+    if(abs(getVelX()) > maxVel)
+    {
+      setVelX(maxVel * Math.signum(getVelX()));
+      
+      if(getVelY() != 0)
+      {
+        float over = abs(getVelX()) - maxVel;
+        float prevSign = Math.signum(getVelY());
+        setVelY((abs(getVelY()) - over) * prevSign);
+        if(prevSign != Math.signum(getVelY()))
+          setVelY(0);
+      }
+    }
+    if(abs(getVelY()) > maxVel)
+    {
+      setVelY(maxVel * Math.signum(getVelY()));
+      
+      if(getVelX() != 0)
+      {
+        float over = abs(getVelY()) - maxVel;
+        float prevSign = Math.signum(getVelX());
+        setVelX((abs(getVelX()) - over) * prevSign);
+        if(prevSign != Math.signum(getVelX()))
+          setVelX(0);
+      }
+    }
       
     position.add(velocity);
   }
@@ -138,15 +162,17 @@ class DrawnObject
   public float getVelY() { return velocity.y; }
   public void setVelY(float y) { velocity.y = y; }
   
-  public PVector getAcceleration() { return acceleration; }
+  public PVector getAccelerationComps()
+  {
+    return PVector.fromAngle(getTheta() - radians(90)).mult(accel);
+  }
+  public float getAcceleration() { return accel; }
   public void setAcceleration(float acceleration) 
   { 
-    this.acceleration = PVector.fromAngle(getTheta() - radians(90)).mult(acceleration);
+    this.accel = acceleration;
   }
-  public float getAccelerationX() { return acceleration.x; }
-  public void setAccelerationX(float x) { acceleration.x = x; }
-  public float getAccelerationY() { return acceleration.y; }
-  public void setAccelerationY(float y) { acceleration.y = y; }
+  public float getAccelerationX() { return getAccelerationComps().x; }
+  public float getAccelerationY() { return getAccelerationComps().y; }
   
   public float getTheta() { return theta; }
   public void setTheta(float theta) { this.theta = theta; }

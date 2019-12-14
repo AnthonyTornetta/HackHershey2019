@@ -7,7 +7,7 @@ color shipColor = color(0, 0, 0);
 color goalColor = color(0, 255, 0);
 color obstacleColor = color(100, 100, 100);
 
-final int SHIP_AMT = 100;
+final int SHIP_AMT = 10;
 
 boolean started = false;
 float shipWidth = 15;
@@ -69,8 +69,9 @@ void draw()
         int geneIndex = ship.getGeneIndex(o);
         if(geneIndex != -1)
         {
-          System.out.println("WITHIN SENSOR RANGE");
           ship.rot(ship.getGene(geneIndex));
+          
+          println(ship.getGene(geneIndex));
         }
       }
       
@@ -88,7 +89,7 @@ void draw()
             i--;
             
             if(pop.getSize() <= 0){
-              pop = pop.sexyTime();
+              //pop = pop.sexyTime();
             }
           }
         }
@@ -105,7 +106,7 @@ void keyPressed()
 {
   if(key == ENTER)
   {
-    started = true;
+    started = !started;
   }
 }
 
