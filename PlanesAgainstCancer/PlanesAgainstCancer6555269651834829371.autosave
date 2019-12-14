@@ -1,0 +1,14 @@
+void setup()
+{
+  size(500, 800);
+  surfacesetTitle("Bots Vs. Cancer");
+  surface.setResizable(true);
+}
+
+void draw()
+{
+  background(0, 0, 0);
+  
+  fill(255, 0, 0);
+  rect(0, 0, 100, 100);
+}
