@@ -1,4 +1,4 @@
-class Obstacle
+class Obstacle extends DrawnObject
 {
   private float x, y;
   private float w, h;
@@ -33,10 +33,9 @@ class Obstacle
   
   public Obstacle(float x, float y, float w, float h)
   {
-    this.x = x;
-    this.h = h;
-    this.y = y;
+    position = new PVector(x, y);
     this.w = w;
+    this.h = h;
   }
   
   public float getX() { return x; }
