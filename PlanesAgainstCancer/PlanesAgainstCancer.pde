@@ -11,7 +11,7 @@ void setup()
   
   for(int i = 0; i < SHIP_AMT; i++)
   {
-    pop.addShip(new TriangleShip());
+    pop.addShip(new Ship());
   }
 }
 
@@ -23,7 +23,7 @@ void draw()
   
   obs.show();
   
-  for(TriangleShip ship : pop.getPopulation())
+  for(Ship ship : pop.getPopulation())
   {
     for(Obstacle o : obs.getObstacles())
     {
@@ -34,7 +34,7 @@ void draw()
       }
     }
     
-    ship.addVelMagnitude(ship.getGene(0));
+    ship.setAcceleration(PVector.fromAngle(ship.getTheta()) * ship.getGene(0));
   }
   
   pop.show();

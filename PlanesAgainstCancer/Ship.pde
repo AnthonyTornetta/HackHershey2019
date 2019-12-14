@@ -1,6 +1,6 @@
 class Ship extends DrawnObject
 {
-  PVector position = new PVector (width/2, height/2);
+  PVector position = new PVector (width/2, height - 50);
   int w, h = 30;
   PShape triangle;
   float angle = -90;
@@ -11,7 +11,7 @@ class Ship extends DrawnObject
     position.x = width/2;
     position.y = height - 50;
     createShip();
-    dna = new DNA(life);
+    dna = new DNA();
   }
   
   public void show()
@@ -45,5 +45,15 @@ class Ship extends DrawnObject
       
     if(position.y < 0)
       position.y = height;
+  }
+  
+  float getGene(int index)
+  {
+    return dna.getGene(index);
+  }
+  
+  int getGeneIndex(Obstacle o)
+  {
+    return 0; // TODO: jose
   }
 }
