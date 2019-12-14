@@ -146,6 +146,8 @@ class Ship extends DrawnObject
       
     fitness = pow(fitness, 5);
     
+    fitness = map(fitness, 0, 100000000, 0, 100);
+    
     if(fitness > maxFitness)
       maxFitness = fitness;
   }
