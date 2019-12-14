@@ -1,8 +1,8 @@
 class Obstacles
 {
-  ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
-  int numOfObstacles = 0, clickCounter = 0;
-  int tempX, tempY;
+  private ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
+  private int numOfObstacles = 0, clickCounter = 0;
+  private int tempX, tempY;
   
   Obstacles(){
   }
@@ -33,4 +33,6 @@ class Obstacles
       println(numOfObstacles);
     }
   }
+  
+  public ArrayList<Obstacle> getObstacles() { return obstacleList; }
 }
