@@ -5,7 +5,7 @@ class Ship extends DrawnObject
   
    public Ship()
   {
-    super(new PVector(width/2, height - 100), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    super(new PVector(width / 2, height / 2), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
     dna = new DNA();
   }
   
