@@ -5,6 +5,9 @@ class Ship extends DrawnObject
 
   private int lifetime = 0;
   private static final int sightRadius = 50;
+  
+  private float fitnessPercentage, fitness = 0, maxFitness = 0;
+  
 
   public Ship()
   {
@@ -118,4 +121,7 @@ class Ship extends DrawnObject
   public int getLifetime() { return lifetime; }
   public int getSightRadius() {return sightRadius;}
   public DNA getDNA() {return dna;}
+  public void setFitnessPercentage(float p) { fitnessPercentage = p;}
+  public float getFitnessPercentage() { return fitnessPercentage;}
+  public float getMaxFitness() { return maxFitness;}
 }
