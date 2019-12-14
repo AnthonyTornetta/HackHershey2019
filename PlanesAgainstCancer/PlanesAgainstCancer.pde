@@ -60,8 +60,10 @@ void draw()
   pop.show();
 }
 
-void mousePressed(){
-  if(mouseButton == LEFT){
-    obstacles.drawObstacles(mouseX, mouseY);
+void mousePressed()
+{
+  if(mouseButton == LEFT)
+  {
+    obs.drawObstacles(mouseX, mouseY);
   }
 }
