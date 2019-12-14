@@ -1,7 +1,7 @@
 class Obstacles
 {
   private ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
-  private int numOfObstacles = 0, clickCounter = 0;
+  private int clickCounter = 0;
   private int tempX, tempY;
 
   Obstacles(){
@@ -9,7 +9,7 @@ class Obstacles
 
   void show()
   {
-    for(int i = 0; i < numOfObstacles; i++)
+    for(int i = 0; i < obstacleList.size(); i++)
     {
       obstacleList.get(i).show();
     }
@@ -29,9 +29,8 @@ class Obstacles
     {
       obstacleList.add(new Obstacle(tempX, tempY, x - tempX, y - tempY, 255));
       clickCounter = 0;
-      numOfObstacles++;
       print("New Obstacle! ");
-      println(numOfObstacles);
+      println(obstacleList.size());
     }
   }
 
