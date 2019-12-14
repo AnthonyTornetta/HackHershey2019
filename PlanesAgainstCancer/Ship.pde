@@ -13,6 +13,13 @@ class Ship extends DrawnObject
     h = 15;
     dna = new DNA();
   }
+  
+  public Ship(DNA d1, DNA d2){
+    super(new PVector(width / 2, height / 2), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    w = 20;
+    h = 15;
+    dna = d1.combineWith(d2);
+  }
 
   public Ship(float x, float y)
   {
@@ -59,12 +66,20 @@ class Ship extends DrawnObject
   {
     PVector sensorPos = new PVector(getX(), getY() + h);
     
-    PVector endPoints[] = new PVector[5];
+    PVector endPoints[] = new PVector[DNA.DNA_LENGTH - DNA.SENSOR_OFFSET];
     
     for(int i = 0; i < endPoints.length; i++)
     {
-      float theta = PI / (i + 2);
-      endPoints[i] = new PVector(sin(theta) * sightRadius, cos(theta) * sightRadius);
+      float theta = PI / (i + DNA.SENSOR_OFFSET + 1);
+      endPoints[i] = new PVector(sensorPos.x + cos(theta) * sightRadius, sensorPos.y - sin(theta) * sightRadius);
+      
+      PVector good = getCollidingPoint(sensorPos, endPoints[i], o);
+      
+      if(good != null)
+      {
+        println(endPoints[i]);
+        return i + 1;
+      }
     }
     
     return -1;
@@ -107,4 +122,5 @@ class Ship extends DrawnObject
   public void addLifetime() { lifetime++; }
   public int getLifetime() { return lifetime; }
   public int getSightRadius() {return sightRadius;}
+  public DNA getDNA() {return dna;}
 }

@@ -5,6 +5,8 @@ Goal gul;
 
 final int SHIP_AMT = 100;
 
+boolean started = false;
+
 void setup()
 {
   size(500, 500);
@@ -31,32 +33,40 @@ void draw()
   gul.show();
   obs.show();
   
-  for(int i = 0; i < pop.getSize(); i++)
+  if(started)
   {
-    Ship ship = pop.getShip(i);
-    
-    for(Obstacle o : obs.getObstacles())
+  
+    for(int i = 0; i < pop.getSize(); i++)
     {
-      int geneIndex = ship.getGeneIndex(o);
-      if(geneIndex != -1)
+      Ship ship = pop.getShip(i);
+      
+      for(Obstacle o : obs.getObstacles())
       {
-        System.out.println("WITHIN SENSOR RANGE");
-        ship.rot(ship.getGene(geneIndex));
-      }
-    }
-    
-    ship.setAcceleration(PVector.fromAngle(ship.getTheta() - radians(90)).mult(ship.getGene(0)));
-    ship.update();
-    ship.addLifetime();
-    
-    for(Obstacle o : obs.getObstacles())
-    {
-      if(ship.getX() >= o.getX() && ship.getX() <= o.getX() + o.getWidth())
-      {
-        if(ship.getY() >= o.getY() && ship.getY() <= o.getY() + o.getHeight())
+        int geneIndex = ship.getGeneIndex(o);
+        if(geneIndex != -1)
         {
-          pop.kill(i);
-          i--;
+          System.out.println("WITHIN SENSOR RANGE");
+          ship.rot(ship.getGene(geneIndex));
+        }
+      }
+      
+      ship.setAcceleration(ship.getGene(DNA.GENE_ACCELERATION));
+      ship.update(ship.getGene(DNA.GENE_MAX_SPEED));
+      ship.addLifetime();
+      
+      for(Obstacle o : obs.getObstacles())
+      {
+        if(ship.getX() >= o.getX() && ship.getX() <= o.getX() + o.getWidth())
+        {
+          if(ship.getY() >= o.getY() && ship.getY() <= o.getY() + o.getHeight())
+          {
+            pop.kill(i);
+            i--;
+            
+            if(pop.getSize() <= 0){
+              pop = pop.sexyTime();
+            }
+          }
         }
       }
     }
@@ -64,6 +74,14 @@ void draw()
   
   //pop.update();
   pop.show();
+}
+
+void keyPressed()
+{
+  if(key == ENTER)
+  {
+    started = true;
+  }
 }
 
 void mousePressed()

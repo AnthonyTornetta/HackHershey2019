@@ -52,10 +52,15 @@ class DrawnObject
     this.c = c;
   }
   
-  public void update()
+  public void update(float maxVel)
   {
-    velocity.mult(.95);
+    //velocity.mult(.95);
     velocity.add(acceleration);
+    if(getVelX() > maxVel)
+      setVelX(maxVel);
+    if(getVelY() > maxVel)
+      setVelY(maxVel);
+      
     position.add(velocity);
   }
   
@@ -69,7 +74,7 @@ class DrawnObject
     shape(shape, 0, 0);
     
     noFill();
-    ellipse(0, 0, Ship.sightRadius, Ship.sightRadius);  //Remove later
+    ellipse(0, 0, Ship.sightRadius * 1.4, Ship.sightRadius * 1.4);  //Remove later
     
     popMatrix();
   }
@@ -89,7 +94,10 @@ class DrawnObject
   public void setVelY(float y) { velocity.y = y; }
   
   public PVector getAcceleration() { return acceleration; }
-  public void setAcceleration(PVector acceleration) { this.acceleration = acceleration; }
+  public void setAcceleration(float acceleration) 
+  { 
+    this.acceleration = PVector.fromAngle(getTheta() - radians(90)).mult(acceleration);
+  }
   public float getAccelerationX() { return acceleration.x; }
   public void setAccelerationX(float x) { acceleration.x = x; }
   public float getAccelerationY() { return acceleration.y; }

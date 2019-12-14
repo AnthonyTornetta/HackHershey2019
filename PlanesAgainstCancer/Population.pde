@@ -43,6 +43,47 @@ class Population
     }
   }
   
+  public List<Ship> sexyTime(){
+    List<Ship> newPop = new ArrayList<Ship>();
+    List<Ship> sortedDeadShips = new ArrayList<Ship>();
+    sortedDeadShips = sortByFitness(deadShips);  ///TODO
+    
+    float totalFitness = 0;
+    
+    for(int i = 0; i < sortedDeadShips.size(); i++){  //Total fitness of every ship combined
+      totalFitness += sortedDeadShips.get(i).getMaxFitness();  //Need to calculate Max Fitness
+    }
+    
+    for(int i = 0; i < sortedDeadShips.size(); i++){
+      sortedDeadShips.get(i).setFitnessPercentage(sortedDeadShips.get(i).getMaxFitness() / totalFitness);  //Sets fitness percentage to every dead ship
+    }
+    for(int i = 0; i< sortedDeadShips.size(); i++){
+      newPop.add(new Ship(pickAShip(sortedDeadShips).getDNA(), pickAShip(sortedDeadShips).getDNA()));  //Adds new Ships with combined DNA of picked Ships
+    }
+    
+    population = newPop;
+    deadShips = new ArrayList<Ship>();
+  }
+  
+  public Ship pickAShip(List<Ship> list){
+    float r = random(1);
+    int index = 0;
+    
+    while(r > 0){
+      r -= list.get(index).getFitnessPercentage;     //TODO Create getFitnessPercentage
+    }
+    index--;
+    return list.get(index);
+  }
+  
+  public List<Ship> sortByFitness(List<Ship> list){
+    for(int i = 0; i < list.size(); i++){
+      for(int j = 0; j < list.size(); j++){
+        
+      }
+    }
+  }
+  
   
   public void addShip(Ship ship) { population.add(ship); }
   

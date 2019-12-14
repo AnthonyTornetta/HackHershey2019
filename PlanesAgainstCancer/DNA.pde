@@ -1,7 +1,12 @@
 class DNA
 {
-  public final static int DNA_LENGTH = 5;
+  public final static int DNA_LENGTH = 6;
   public final static float MUTATION_RATE = 1;
+  
+  public final static int GENE_ACCELERATION = 0;
+  public final static int GENE_MAX_SPEED = 1;
+  
+  public final static int SENSOR_OFFSET = 2;
   
   private float[] genes = new float[DNA_LENGTH];
   
@@ -37,10 +42,11 @@ class DNA
   
   public void randomize(float[] genes)
   {
-    genes[0] = random(1);
-    for(int i = 1; i < genes.length; i++)
+    genes[0] = random(.1);
+    genes[1] = random(.4) + 0.005;
+    for(int i = SENSOR_OFFSET; i < genes.length; i++)
     {
-      genes[i] = random(5) - 2;
+      genes[i] = random(50) - 25;
     }
   }
   
