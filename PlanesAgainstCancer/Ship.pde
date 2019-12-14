@@ -3,9 +3,15 @@ class Ship extends DrawnObject
   private DNA dna;
   private int h = 15, w = 20;
   
-  public Ship(float x, float y, color c)
+   public Ship()
   {
-    super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), c);
+    super(new PVector(width/2, height - 100), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
+    dna = new DNA();
+  }
+  
+  public Ship(float x, float y)
+  {
+    super(new PVector(x, y), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
     dna = new DNA();
   }
   
