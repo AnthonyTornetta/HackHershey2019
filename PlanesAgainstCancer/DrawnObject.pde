@@ -14,9 +14,10 @@ class DrawnObject
     velocity = new PVector();
     acceleration = new PVector();
     theta = 0.0;
-    
+        
+    c = #ffff00;
+    fill(c);
     shape = createShape(RECT, position.x, position.y, 10, 10);
-    c = #ffffff;
   }
   
   public DrawnObject(PVector position, PShape shape, color c)
@@ -26,8 +27,9 @@ class DrawnObject
     acceleration = new PVector();
     theta = 0.0;
     
-    this.shape = shape;
     this.c = c;
+    fill(c);
+    this.shape = shape;
   }
   
   public DrawnObject(PVector position, PVector velocity, float theta, PShape shape, color c)
@@ -37,8 +39,10 @@ class DrawnObject
     acceleration = new PVector();
     this.theta = theta;
     
-    this.shape = shape;
     this.c = c;
+    fill(c);
+    this.shape = shape;
+
   }
   
   public DrawnObject(PVector position, PVector velocity, PVector acceleration, float theta, PShape shape, color c)
@@ -48,8 +52,10 @@ class DrawnObject
     this.acceleration = acceleration;
     this.theta = theta;
     
-    this.shape = shape;
     this.c = c;
+    fill(c);
+    this.shape = shape;
+
   }
   
   public void update()
@@ -65,12 +71,8 @@ class DrawnObject
     translate(position.x, position.y);
     rotate(radians(theta));
     shapeMode(CENTER);
-    fill(c);
+    //fill(c);
     shape(shape, 0, 0);
-    
-    noFill();
-    ellipse(0, 0, Ship.sightRadius, Ship.sightRadius);  //Remove later
-    
     popMatrix();
   }
   
