@@ -1,6 +1,6 @@
 class DNA
 {
-  public final static int DNA_LENGTH = 4;
+  public final static int DNA_LENGTH = 5;
   public final static float MUTATION_RATE = 1;
   
   private float[] genes = new float[DNA_LENGTH];
@@ -40,7 +40,7 @@ class DNA
     genes[0] = random(1);
     for(int i = 1; i < genes.length; i++)
     {
-      genes[i] = random(4) - 2;
+      genes[i] = random(5) - 2;
     }
   }
   

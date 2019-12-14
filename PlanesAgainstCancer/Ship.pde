@@ -57,45 +57,38 @@ class Ship extends DrawnObject
 
   int getGeneIndex(Obstacle o)
   {
-    ArrayList<PVector> corners = new ArrayList<PVector>();
-    PVector centerPoint = new PVector(getX(), getY() + h);
-
-    for(int i = 0; i < 4; i++)
-      corners.add(o.returnCorners(i));
-
-    for(int i = 4; i < corners.size(); i++){
-      PVector collisionPoint = getCollidingPoint(centerPoint, corners.get(i));
-      float distance = dist(collisionPoint.x, collisionPoint.y, centerPoint.x, centerPoint.y);
-
-      if(distance <= sightRadius){
-        float theta = acos((abs(collisionPoint.x - centerPoint.x)) / distance);
-
-        if(theta >= 0 && theta < PI/4)
-          return 4;
-        else if(theta >= PI/4 && theta < PI/2)
-          return 3;
-        else if(theta >= PI/2 && theta < 3*PI/4)
-          return 2;
-        else if(theta >= 3*PI/4 && theta <= PI)
-          return 1;
-      }
+    PVector sensorPos = new PVector(getX(), getY() + h);
+    
+    PVector endPoints[] = new PVector[5];
+    
+    for(int i = 0; i < endPoints.length; i++)
+    {
+      float theta = PI / (i + 2);
+      endPoints[i] = new PVector(sin(theta) * sightRadius, cos(theta) * sightRadius);
     }
+    
     return -1;
   }
 
   // Returns where they are colliding or null if not
-  public PVector getCollidingPoint(PVector lineStart, PVector lineEnd)
+  public PVector getCollidingPoint(PVector lineStart, PVector lineEnd, Obstacle ob)
   {
-    for(int dx = 0; dx <= 1; dx++)
-    {
-      for(int dy = 0; dy <= 1; dy++)
-      {
-        PVector vec = lineIntersection(getX(), getY(), getX() + w * dx, getY() + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
-        if(vec != null)
-          return vec;
-      }
-    }
-
+    PVector vec = lineIntersection(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y, ob.getX(), ob.getY(), ob.getX() + ob.getWidth(), ob.getY());
+    if(vec != null)
+      return vec;
+      
+    vec = lineIntersection(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y, ob.getX(), ob.getY(), ob.getX(), ob.getY() + ob.getHeight());
+    if(vec != null)
+      return vec;
+      
+    vec = lineIntersection(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y, ob.getX(), ob.getY() + ob.getHeight(), ob.getX() + ob.getWidth(), ob.getY() + ob.getHeight());
+    if(vec != null)
+      return vec;
+      
+    vec = lineIntersection(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y, ob.getX() + ob.getWidth(), ob.getY(), ob.getX(), ob.getY() + ob.getHeight());
+    if(vec != null)
+      return vec;
+      
     return null;
   }
 

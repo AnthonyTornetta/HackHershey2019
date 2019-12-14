@@ -1,7 +1,7 @@
 Population pop = new Population();
 Obstacles obs = new Obstacles();
 
-final int SHIP_AMT = 100;
+final int SHIP_AMT = 20;
 
 void setup()
 {
@@ -13,6 +13,9 @@ void setup()
   {
     pop.addShip(new Ship(width / 2, height / 2));
   }
+  
+  Obstacle ob = new Obstacle(0, 0, 100, 100, 0);
+  println(getCollidingPoint(new PVector(50, 150), new PVector(100, 50), ob));
 }
 
 void draw()
