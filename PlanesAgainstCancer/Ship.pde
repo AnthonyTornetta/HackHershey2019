@@ -3,6 +3,9 @@ class Ship extends DrawnObject
   private float w, h;
   private DNA dna;
 
+  private int lifetime = 0;
+  private static final int sightRadius = 50;
+
    public Ship()
   {
     super(new PVector(width / 2, height / 2), createShape(TRIANGLE,  0, 0, -10, 15, 10, 15), 255);
@@ -56,7 +59,6 @@ class Ship extends DrawnObject
   {
     ArrayList<PVector> corners = new ArrayList<PVector>();
     PVector centerPoint = new PVector(getX(), getY() + h);
-    int radius = 50; //Variable
 
     for(int i = 0; i < 4; i++)
       corners.add(o.returnCorners(i));
@@ -65,7 +67,7 @@ class Ship extends DrawnObject
       PVector collisionPoint = getCollidingPoint(centerPoint, corners.get(i));
       float distance = dist(collisionPoint.x, collisionPoint.y, centerPoint.x, centerPoint.y);
 
-      if(distance <= radius){
+      if(distance <= sightRadius){
         float theta = acos((abs(collisionPoint.x - centerPoint.x)) / distance);
 
         if(theta >= 0 && theta < PI/4)
@@ -108,4 +110,8 @@ class Ship extends DrawnObject
       return new PVector(x1 + (uA * (x2-x1)), y1 + (uA * (y2-y1)));
     return null;
   }
+  
+  public void addLifetime() { lifetime++; }
+  public int getLifetime() { return lifetime; }
+  public int getSightRadius() {return sightRadius;}
 }
