@@ -1,17 +1,18 @@
-class Obstacle{
-  PVector location = new PVector();
-  int w, h; 
+class Obstacle
+{
+  float x, y;
+  float w, h;
   
-  Obstacle(int x, int y, int w, int h){
-    location.x = x;
-    location.y = y;
+  public Obstacle(float x, float y, float w, float h)
+  {
+    this.x = x;
+    this.h = h;
+    this.y = y;
     this.w = w;
-    this.h = h;    
   }
   
-  void show(){
-    fill(255);
-    stroke(255);
-    rect(location.x, location.y, w, h);    
-  }  
+  public float getX() { return x; }
+  public float getY() { return y; }
+  public float getWidth() { return w; }
+  public float getHeight() {return h; }
 }
