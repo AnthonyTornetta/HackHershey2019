@@ -3,10 +3,10 @@ class Obstacles
   private ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
   private int numOfObstacles = 0, clickCounter = 0;
   private int tempX, tempY;
-  
+
   Obstacles(){
   }
-  
+
   void show()
   {
     for(int i = 0; i < numOfObstacles; i++)
@@ -14,11 +14,12 @@ class Obstacles
       obstacleList.get(i).show();
     }
   }
-  
+
   void drawObstacles(int x, int y)
   {
+
     clickCounter++;
-    
+
     if(clickCounter == 1)
     {
       tempX = x;
@@ -33,6 +34,16 @@ class Obstacles
       println(numOfObstacles);
     }
   }
-  
+
+  ArrayList<PVector> returnObstacleCorners(){
+    ArrayList<PVector> corners = new ArrayList<PVector>();
+    for(Obstacle temp: obstacleList){
+      for(int i = 0; i < 4; i++){
+        corners.add(temp.returnCorners(i));  //Should work???
+      }
+    }
+    return corners;  //Check later
+  }
+
   public ArrayList<Obstacle> getObstacles() { return obstacleList; }
 }

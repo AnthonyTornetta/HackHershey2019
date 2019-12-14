@@ -41,4 +41,14 @@ class Ship extends DrawnObject
     if(position.y < 0)
       position.y = height;
   }
+  
+  float getGene(int index)
+  {
+    return dna.getGene(index);
+  }
+  
+  int getGeneIndex(Obstacle o)
+  {
+    return 0; // TODO: jose
+  }
 }
