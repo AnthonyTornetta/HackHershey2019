@@ -11,7 +11,7 @@ void setup()
   
   for(int i = 0; i < SHIP_AMT; i++)
   {
-    pop.addShip(new Ship(width / 2, height - 50));
+    pop.addShip(new Ship(width / 2, height / 2));
   }
 }
 
@@ -59,11 +59,12 @@ void draw()
       int geneIndex = ship.getGeneIndex(o);
       if(geneIndex != -1)
       {
+        System.out.println("WITHIN SENSOR RANGE");
         ship.rot(ship.getGene(geneIndex));
       }
     }
     
-    ship.setAcceleration(PVector.fromAngle(ship.getTheta()).mult(ship.getGene(0)));
+    ship.setAcceleration(PVector.fromAngle(ship.getTheta() - radians(90)).mult(ship.getGene(0)));
     ship.update();
     
     for(Obstacle o : obs.getObstacles())
