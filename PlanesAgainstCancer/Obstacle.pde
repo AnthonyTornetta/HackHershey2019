@@ -48,9 +48,4 @@ class Obstacle extends DrawnObject
       default: return new PVector(0,0);
     }
   }
-  
-  public float getX() { return getX(); }
-  public float getY() { return getY(); }
-  public float getWidth() { return w; }
-  public float getHeight() {return h; }
 }

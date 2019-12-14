@@ -15,8 +15,6 @@ void setup()
   }
 }
 
-ArrayList<Ship> deadShips = new ArrayList<Ship>();
-
 void draw()
 {
   background(150, 30, 30);
