@@ -5,23 +5,42 @@ Goal gul;
 
 color shipColor = color(0, 0, 0);
 color goalColor = color(0, 255, 0);
-color obstacleColor = color(255, 0, 0);
+color obstacleColor = color(100, 100, 100);
 
 final int SHIP_AMT = 100;
 
+float shipWidth = 15;
+float shipHeight = 20;
+float spawnX = 250;
+float spawnY = 400;
+  
+float goalRadius = 50;
+float goalX = 250;
+float goalY = 100;
+
 void setup()
 {
-  size(500, 500);
+  fullScreen();
+  
+  shipWidth = 15;
+  shipHeight = 20;
+  spawnX = width / 2;
+  spawnY = height / 2;
+  
+  goalRadius = 50;
+  goalX = width / 2;
+  goalY = height / 4;
+  
   surface.setTitle("Bots Vs. Cancer");
   surface.setResizable(true);
  
-  gul = new Goal(width / 2, 100, 25, goalColor);
+  gul = new Goal(goalX, goalY, goalRadius, goalColor);
   
   int c = 0;
   for(int i = 0; i < SHIP_AMT; i++)
   {
     shipColor = color(c);
-    pop.addShip(new Ship(width / 2, height / 2));
+    pop.addShip(new Ship(spawnX, spawnY));
     c += 2;
   }
   

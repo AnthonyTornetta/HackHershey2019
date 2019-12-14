@@ -8,7 +8,7 @@ class Ship extends DrawnObject
 
   public Ship()
   {
-    super(new PVector(width / 2, height / 2), 20, 15, shipColor, ShapeType.triangle);
+    super(new PVector(width / 2, height / 2), shipWidth, shipHeight, shipColor, ShapeType.triangle);
     w = 20;
     h = 15;
     dna = new DNA();
@@ -16,7 +16,7 @@ class Ship extends DrawnObject
 
   public Ship(float x, float y)
   {
-    super(new PVector(x, y), 20, 15, shipColor, ShapeType.triangle);
+    super(new PVector(x, y), shipWidth, shipHeight, shipColor, ShapeType.triangle);
     w = 20;
     h = 15;
     dna = new DNA();
@@ -24,7 +24,7 @@ class Ship extends DrawnObject
 
   public Ship(float x, float y, float w, float h)
   {
-    super(new PVector(width / 2, height / 2), w, h, shipColor, ShapeType.triangle);
+    super(new PVector(width / 2, height / 2), shipWidth, shipHeight, shipColor, ShapeType.triangle);
     this.w = w;
     this.h = h;
     dna = new DNA();
