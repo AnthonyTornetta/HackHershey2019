@@ -3,7 +3,7 @@ class Ship extends DrawnObject
   private float w, h;
   private DNA dna;
 
-  private int lifetime = 0;
+  private int lifetime = 0, maxLifeTime = 500;
   private static final int sightRadius = 50;
   
   private float fitnessPercentage, fitness = 0, maxFitness = 0;
@@ -118,7 +118,55 @@ class Ship extends DrawnObject
   }
   
   public void calculateFitness(){
+    float distance = dist(getX(), getY(), gul.getX(), gul.getY());
     
+    fitness = map(distance, 0, sqrt(width*width + height*height), 50, 0);  //Distance can give up to 50 points
+    fitness += map(lifetime, 0, maxLifeTime, 0, 50);  //steps give up to 50 points
+    
+    if(distance <= gul.r){  //makes it to the goal
+      setVelocity(new PVector(0, 0));
+      fitness = map(lifetime, 0, maxLifeTime, maxLifeTime, 0);  //Accounts for steps
+      fitness = map(fitness, 0, maxLifeTime, 5000, 10000); //normalizes fitness [5000,10000]
+      fitness *= 10;
+    }
+      
+    if(crossesNoLines())
+      fitness *= 1000;
+      
+    fitness = pow(fitness, 5);
+    
+    if(fitness > maxFitness)
+      maxFitness = fitness;
+  }
+
+  
+  boolean crossesNoLines(){
+    for(int i = 0; i < obs.obstacleList.size(); i++){
+      Obstacle temp = obs.obstacleList.get(i);
+      
+      if(linesTouching(getX(), getY(), gul.getX(), gul.getY(), temp.getX(), temp.getY(), temp.getX() + temp.w, temp.getY()))
+        return false;
+      if(linesTouching(getX(), getY(), gul.getX(), gul.getY(), temp.getX(), temp.getY(), temp.getX(), temp.getY() + temp.h))
+        return false;
+      if(linesTouching(getX(), getY(), gul.getX(), gul.getY(), temp.getX() + temp.w, temp.getY(), temp.getX() + temp.w, temp.getY() + temp.h))
+        return false;
+      if(linesTouching(getX(), getY(), gul.getX(), gul.getY(), temp.getX(), temp.getY() + temp.h, temp.getX() + temp.w, temp.getY() + temp.h))
+        return false;
+    }
+    return true;
+  }
+  boolean linesTouching(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
+    float denominator = ((x2 - x1) * (y4 - y3)) - ((y2 - y1) * (x4 - x3));
+    float numerator1 = ((y1 - y3) * (x4 - x3)) - ((x1 - x3) * (y4 - y3));
+    float numerator2 = ((y1 - y3) * (x2 - x1)) - ((x1 - x3) * (y2 - y1));
+  
+    // Detect coincident lines (has a problem)
+    if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
+  
+    float r = numerator1 / denominator;
+    float s = numerator2 / denominator;
+  
+    return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
   }
   
   public void addLifetime() { lifetime++; }
