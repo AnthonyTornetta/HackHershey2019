@@ -25,7 +25,7 @@ void setup()
   shipWidth = 15;
   shipHeight = 20;
   spawnX = width / 2;
-  spawnY = height / 2;
+  spawnY =  3 * height / 4;
   
   goalRadius = 50;
   goalX = width / 2;
