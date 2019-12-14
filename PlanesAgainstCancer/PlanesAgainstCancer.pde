@@ -1,4 +1,5 @@
 Population pop = new Population();
+Obstacles obs = new Obstacles();
 
 final int SHIP_AMT = 100;
 
@@ -10,10 +11,8 @@ void setup()
   
   for(int i = 0; i < SHIP_AMT; i++)
   {
-    pop.addShip(new Ship());
+    pop.addShip(new TriangleShip());
   }
-  
-  
 }
 
 void draw()
@@ -21,5 +20,22 @@ void draw()
   background(150, 30, 30);
   
   fill(200, 200, 200);
-  rect(0, 0, 100, 100);
+  
+  obs.show();
+  
+  for(TriangleShip ship : pop.getPopulation())
+  {
+    for(Obstacle o : obs.getObstacles())
+    {
+      int geneIndex = ship.getGeneIndex(o);
+      if(geneIndex != -1)
+      {
+        ship.addTheta(ship.getGene(geneIndex));
+      }
+    }
+    
+    ship.addVelMagnitude(ship.getGene(0));
+  }
+  
+  pop.show();
 }

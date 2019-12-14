@@ -1,17 +1,17 @@
-class triangleShip
+class TriangleShip
 {
-  PVector position = new PVector (width/2, height/2);
-  int w, h = 30;
+  PVector position = new PVector (width/2, height - 50);
+  int w = 15, h = 30;
   PShape triangle;
   float angle = -90;
   DNA dna;
   
-  triangleShip()
+  TriangleShip()
   {
     position.x = width/2;
     position.y = height - 50;
     createShip();
-    dna = new DNA(life);
+    dna = new DNA();
   }
   
   void show()
@@ -42,7 +42,7 @@ class triangleShip
       
     if(position.y > height)
       position.y = 0;
-      
+    
     if(position.y < 0)
       position.y = height;
   }
