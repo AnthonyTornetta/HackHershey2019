@@ -1,7 +1,7 @@
 class Obstacle extends DrawnObject
 {
-  PVector position = new PVector();
-  float w, h;
+  private PVector position = new PVector();
+  private float w, h;
 
   public Obstacle(float x, float y, float w, float h)
   {
