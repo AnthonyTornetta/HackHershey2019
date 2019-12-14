@@ -1,13 +1,9 @@
 class Obstacle extends DrawnObject
 {
-  PVector position = new PVector();
-  float w, h;
-
-  public Obstacle(float x, float y, float w, float h)
+  float w, float h;
+  public Obstacle(float x, float y, float w, float h, color c)
   {
-    position = new PVector(x, y);
-    this.w = w;
-    this.h = h;
+    super(new PVector(x, y), createShape(RECT, 0, 0, w, h), c);
   }
 
   // Returns where they are colliding or null if not
@@ -17,7 +13,7 @@ class Obstacle extends DrawnObject
     {
       for(int dy = 0; dy <= 1; dy++)
       {
-        PVector vec = lineIntersection(position.x, position.y, position.x + w * dx, position.y + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
+        PVector vec = lineIntersection(getX(), getY(), getX() + w * dx, getY() + h * dy, lineStart.x, lineStart.y, lineEnd.x, lineEnd.y);
         if(vec != null)
           return vec;
       }
@@ -38,24 +34,23 @@ class Obstacle extends DrawnObject
     return null;
   }
   
-  void show(){
-    fill(255);
-    stroke(255);
-    rect(position.x, position.y, w, h);    
+  void show()
+  {
+    super.show();
   }  
   
   PVector returnCorners(int corner){
     switch(corner){
-      case 0: return new PVector(position.x, position.y);
-      case 1: return new PVector(position.x, position.y + h);
-      case 2: return new PVector(position.x + w, position.y);
-      case 3: return new PVector(position.x + w, position.y + h);
+      case 0: return new PVector(getX(), getY());
+      case 1: return new PVector(getX(), getY() + h);
+      case 2: return new PVector(getX() + w, getY());
+      case 3: return new PVector(getX() + w, getY() + h);
       default: return new PVector(0,0);
     }
   }
   
-  public float getX() { return position.x; }
-  public float getY() { return position.y; }
+  public float getX() { return getX(); }
+  public float getY() { return getY(); }
   public float getWidth() { return w; }
   public float getHeight() {return h; }
 }

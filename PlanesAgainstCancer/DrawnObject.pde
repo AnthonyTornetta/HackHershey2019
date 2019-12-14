@@ -6,6 +6,7 @@ class DrawnObject
   private float theta;
   
   private PShape shape;
+  private color c;
   
   public DrawnObject()
   {
@@ -15,33 +16,40 @@ class DrawnObject
     theta = 0.0;
     
     shape = createShape(RECT, position.x, position.y, 10, 10);
+    c = #ffffff;
   }
   
-  public DrawnObject(PVector position, PShape shape)
+  public DrawnObject(PVector position, PShape shape, color c)
   {
     this.position = position;
     velocity = new PVector();
     acceleration = new PVector();
     theta = 0.0;
+    
     this.shape = shape;
+    this.c = c;
   }
   
-  public DrawnObject(PVector position, PVector velocity, float theta, PShape shape)
+  public DrawnObject(PVector position, PVector velocity, float theta, PShape shape, color c)
   {
     this.position = position;
     this.velocity = velocity;
     acceleration = new PVector();
     this.theta = theta;
+    
     this.shape = shape;
+    this.c = c;
   }
   
-  public DrawnObject(PVector position, PVector velocity, PVector acceleration, float theta, PShape shape)
+  public DrawnObject(PVector position, PVector velocity, PVector acceleration, float theta, PShape shape, color c)
   {
     this.position = position;
     this.velocity = velocity;
     this.acceleration = acceleration;
     this.theta = theta;
+    
     this.shape = shape;
+    this.c = c;
   }
   
   public void update()
@@ -57,6 +65,7 @@ class DrawnObject
     translate(position.x, position.y);
     rotate(radians(theta));
     shapeMode(CENTER);
+    fill(c);
     shape(shape, 0, 0);
     popMatrix();
   }
@@ -87,4 +96,7 @@ class DrawnObject
   
   public PShape getShape() { return shape; }
   public void setShape(PShape shape) { this.shape = shape; }
+  
+  public color getColor() { return c; }
+  public void setColor(color c) { this.c = c; }
 }
