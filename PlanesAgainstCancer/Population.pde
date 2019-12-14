@@ -43,12 +43,12 @@ class Population
     }
   }
 
-  //public List<Ship> sexyTime(){
-  //  List<Ship> newPop = new ArrayList<Ship>();
-  //  List<Ship> sortedDeadShips = new ArrayList<Ship>();
-  //  sortedDeadShips = sortByFitness(deadShips);  ///TODO
+  public List<Ship> sexyTime(){
+    List<Ship> newPop = new ArrayList<Ship>();
+    List<Ship> sortedDeadShips = new ArrayList<Ship>();
+    sortedDeadShips = sortByFitness(deadShips);  ///TODO
 
-  //  float totalFitness = 0;
+    float totalFitness = 0;
 
     for(int i = 0; i < sortedDeadShips.size(); i++){  //Total fitness of every ship combined
       //totalFitness += sortedDeadShips.get(i).getMaxFitness();  //Need to calculate Max Fitness
