@@ -2,9 +2,9 @@ import java.util.List;
 
 class Population
 {
-  private List<Ship> population = new ArrayList();
+  private List<TriangleShip> population = new ArrayList();
   
-  public Population(List<Ship> population)
+  public Population(List<TriangleShip> population)
   {
     this.population = population;
   }
@@ -19,8 +19,16 @@ class Population
     return population.size();
   }
   
-  public void addShip(Ship ship) { population.add(ship); }
+  public void show()
+  {
+    for(TriangleShip ship : population)
+    {
+      ship.show();
+    }
+  }
   
-  public List<Ship> getPopulation() { return population; }
-  public void setPopulation(List<Ship> population) { this.population = population; }
+  public void addShip(TriangleShip ship) { population.add(ship); }
+  
+  public List<TriangleShip> getPopulation() { return population; }
+  public void setPopulation(List<TriangleShip> population) { this.population = population; }
 }
