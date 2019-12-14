@@ -51,11 +51,11 @@ class Population
     float totalFitness = 0;
     
     for(int i = 0; i < sortedDeadShips.size(); i++){  //Total fitness of every ship combined
-      //totalFitness += sortedDeadShips.get(i).getMaxFitness();  //Need to calculate Max Fitness
+      totalFitness += sortedDeadShips.get(i).getMaxFitness();  //Need to calculate Max Fitness
     }
     
     for(int i = 0; i < sortedDeadShips.size(); i++){
-      //sortedDeadShips.get(i).setFitnessPercentage(sortedDeadShips.get(i).getMaxFitness() / totalFitness);  //Sets fitness percentage to every dead ship
+      sortedDeadShips.get(i).setFitnessPercentage(sortedDeadShips.get(i).getMaxFitness() / totalFitness);  //Sets fitness percentage to every dead ship
     }
     for(int i = 0; i< sortedDeadShips.size(); i++){
       newPop.add(new Ship(pickAShip(sortedDeadShips).getDNA(), pickAShip(sortedDeadShips).getDNA()));  //Adds new Ships with combined DNA of picked Ships
