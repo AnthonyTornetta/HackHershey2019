@@ -4,7 +4,8 @@ class DrawnObject
   private PVector velocity;
   private PVector acceleration;
   private float theta;
-  private ShapeType shape;
+  
+  private PShape shape;
   
   public DrawnObject()
   {
@@ -13,60 +14,51 @@ class DrawnObject
     acceleration = new PVector();
     theta = 0.0;
     
-    shape = ShapeType.rectangle;
+    shape = createShape(RECT, position.x, position.y, 10, 10);
   }
   
-  public DrawnObject(PVector position, ShapeType shape)
+  public DrawnObject(PVector position, PShape shape)
   {
     this.position = position;
     velocity = new PVector();
     acceleration = new PVector();
     theta = 0.0;
-    
     this.shape = shape;
   }
   
-  public DrawnObject(PVector position, PVector velocity, ShapeType shape, float theta)
+  public DrawnObject(PVector position, PVector velocity, float theta, PShape shape)
   {
     this.position = position;
     this.velocity = velocity;
     acceleration = new PVector();
     this.theta = theta;
-    
     this.shape = shape;
   }
   
-  public DrawnObject(PVector position, PVector velocity, PVector acceleration, ShapeType shape, float theta)
+  public DrawnObject(PVector position, PVector velocity, PVector acceleration, float theta, PShape shape)
   {
     this.position = position;
     this.velocity = velocity;
     this.acceleration = acceleration;
     this.theta = theta;
-    
     this.shape = shape;
   }
   
-  void update()
+  public void update()
   {
     velocity.mult(.95);
     velocity.add(acceleration);
     position.add(velocity);
   }
   
-  void show()
+  public void show()
   {
-    if(shape == ShapeType.triangle)
-    {
-      
-    }
-    else if(shape == ShapeType.rectangle)
-    {
-      
-    }
-    else if(shape == ShapeType.circle)
-    {
-      
-    }
+    pushMatrix();
+    translate(position.x, position.y);
+    rotate(radians(theta));
+    shapeMode(CENTER);
+    shape(shape, 0, 0);
+    popMatrix();
   }
   
   public PVector getPosistion() { return position; }
@@ -83,9 +75,9 @@ class DrawnObject
   public float getVelY() { return velocity.y; }
   public void setVelY(float y) { velocity.y = y; }
   
-    public PVector getAcceleration() { return acceleration; }
+  public PVector getAcceleration() { return acceleration; }
   public void setAcceleration(PVector acceleration) { this.acceleration = acceleration; }
-    public float getAccelerationX() { return acceleration.x; }
+  public float getAccelerationX() { return acceleration.x; }
   public void setAccelerationX(float x) { acceleration.x = x; }
   public float getAccelerationY() { return acceleration.y; }
   public void setAccelerationY(float y) { acceleration.y = y; }
@@ -93,6 +85,6 @@ class DrawnObject
   public float getTheta() { return theta; }
   public void setTheta(float theta) { this.theta = theta; }
   
-  public ShapeType getShape() { return shape; }
-  public void setShape(ShapeType shape) { this.shape = shape; }
+  public PShape getShape() { return shape; }
+  public void setShape(PShape shape) { this.shape = shape; }
 }
