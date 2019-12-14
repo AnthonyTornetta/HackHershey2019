@@ -1,7 +1,7 @@
 class Ship extends DrawnObject
 {
-  PVector position = new PVector (width/2, height/2);
-  int w, h = 30;
+  PVector position = new PVector (width/2, height - 50);
+  int w = 15, h = 30;
   PShape triangle;
   float angle = -90;
   DNA dna;
@@ -11,17 +11,12 @@ class Ship extends DrawnObject
     position.x = width/2;
     position.y = height - 50;
     createShip();
-    dna = new DNA(life);
+    dna = new DNA();
   }
   
   public void show()
   {
-    pushMatrix();
-    translate(position.x, position.y);
-    rotate(radians(angle + 90));
-    shapeMode(CENTER);
-    shape(triangle, 0, 0);
-    popMatrix();
+    super.show();
   }
   
   public void createShip()
@@ -42,7 +37,7 @@ class Ship extends DrawnObject
       
     if(position.y > height)
       position.y = 0;
-      
+    
     if(position.y < 0)
       position.y = height;
   }
