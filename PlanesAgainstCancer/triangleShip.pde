@@ -46,4 +46,9 @@ class TriangleShip
     if(position.y < 0)
       position.y = height;
   }
+  
+  float getGene(int index)
+  {
+    return dna.getGene(index);
+  }
 }
