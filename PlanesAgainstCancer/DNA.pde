@@ -3,7 +3,7 @@ class DNA
   public final static int DNA_LENGTH = 4;
   public final static float MUTATION_RATE = 1;
   
-  float[] genes = new float[DNA_LENGTH];
+  private float[] genes = new float[DNA_LENGTH];
   
   public DNA()
   {
