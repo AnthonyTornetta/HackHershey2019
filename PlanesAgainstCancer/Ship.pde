@@ -117,6 +117,10 @@ class Ship extends DrawnObject
     return null;
   }
   
+  public void calculateFitness(){
+    
+  }
+  
   public void addLifetime() { lifetime++; }
   public int getLifetime() { return lifetime; }
   public int getSightRadius() {return sightRadius;}
