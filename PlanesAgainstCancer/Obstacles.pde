@@ -4,7 +4,12 @@ class Obstacles
   private int clickCounter = 0;
   private int tempX, tempY;
 
-  Obstacles(){
+  Obstacles()
+  {  
+    obstacleList.add(new Obstacle(0, 0, width, 10, obstacleColor));
+    obstacleList.add(new Obstacle(0, 0, 10, height, obstacleColor));
+    obstacleList.add(new Obstacle(0, height, width, 10, obstacleColor));
+    obstacleList.add(new Obstacle(width, 0, 10, height, obstacleColor));
   }
 
   void show()

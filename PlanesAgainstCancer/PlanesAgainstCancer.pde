@@ -44,9 +44,6 @@ void setup()
     pop.addShip(new Ship(spawnX, spawnY));
     c += 2;
   }
-  
-  Obstacle ob = new Obstacle(0, 0, 100, 100, 0);
-  println(getCollidingPoint(new PVector(50, 150), new PVector(100, 50), ob));
 }
 
 void draw()
