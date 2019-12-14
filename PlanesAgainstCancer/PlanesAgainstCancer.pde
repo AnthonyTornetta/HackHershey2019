@@ -44,6 +44,7 @@ void draw()
     
     ship.setAcceleration(PVector.fromAngle(ship.getTheta() - radians(90)).mult(ship.getGene(0)));
     ship.update();
+    ship.addLifetime();
     
     for(Obstacle o : obs.getObstacles())
     {
@@ -51,7 +52,6 @@ void draw()
       {
         if(ship.getY() >= o.getY() && ship.getY() <= o.getY() + o.getHeight())
         {
-          println("ASDF");
           pop.kill(i);
           i--;
         }

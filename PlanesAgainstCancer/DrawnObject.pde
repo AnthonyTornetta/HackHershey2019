@@ -67,6 +67,8 @@ class DrawnObject
     shapeMode(CENTER);
     fill(c);
     shape(shape, 0, 0);
+    noFill();
+    ellipse(0, 0, Ship.sightRadius, Ship.sightRadius);
     popMatrix();
   }
   
