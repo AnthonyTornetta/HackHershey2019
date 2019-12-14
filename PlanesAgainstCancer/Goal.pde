@@ -1,4 +1,4 @@
-class Goal
+class Goal extends DrawnObject
 {
   
 }

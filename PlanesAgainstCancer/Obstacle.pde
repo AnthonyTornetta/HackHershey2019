@@ -1,4 +1,4 @@
-class Obstacle
+class Obstacle extends DrawnObject
 {
   float x, y;
   float w, h;
