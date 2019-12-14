@@ -38,8 +38,6 @@ class Obstacle extends DrawnObject
     return null;
   }
   
-  
-  
   void show(){
     fill(255);
     stroke(255);

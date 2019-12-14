@@ -19,6 +19,8 @@ class Population
     return population.size();
   }
   
+  public void addShip(Ship ship) { population.add(ship); }
+  
   public List<Ship> getPopulation() { return population; }
   public void setPopulation(List<Ship> population) { this.population = population; }
 }
