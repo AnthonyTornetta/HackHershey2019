@@ -3,7 +3,7 @@ class Ship extends DrawnObject
   private float w, h;
   private DNA dna;
 
-  private int lifetime = 0, maxLifeTime = 500;
+  private int lifetime = 0;
   private static final int sightRadius = 50;
   
   private float fitnessPercentage, fitness = 0, maxFitness = 0;
@@ -129,8 +129,8 @@ class Ship extends DrawnObject
   }
   
   public void calculateFitness(){
-    float distance = dist(getX(), getY(), gul.getX(), gul.getY());
     
+<<<<<<< HEAD
     fitness = map(distance, 0, sqrt(width*width + height*height), 50, 0);  //Distance can give up to 50 points
     fitness += map(lifetime, 0, maxLifeTime, 0, 50);  //steps give up to 50 points
     
@@ -145,6 +145,8 @@ class Ship extends DrawnObject
       fitness *= 1000;
       
     fitness = pow(fitness, 5);
+    
+    fitness = map(fitness, 0, 100000000, 0, 100);
     
     if(fitness > maxFitness)
       maxFitness = fitness;
@@ -178,6 +180,8 @@ class Ship extends DrawnObject
     float s = numerator2 / denominator;
   
     return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
+=======
+>>>>>>> parent of 04c9a97... fixed sorting but with neg fitness
   }
   
   public void addLifetime() { lifetime++; }
