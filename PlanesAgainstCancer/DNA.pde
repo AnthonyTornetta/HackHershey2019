@@ -14,6 +14,11 @@ class DNA
     this.genes = genes;
   }
   
+  //public DNA combineWith(DNA other)
+  //{
+    
+  //}
+  
   public void randomize(float[] genes)
   {
     for(int i = 0; i < genes.length; i++)
