@@ -1,13 +1,17 @@
 Population pop = new Population();
 Obstacles obs = new Obstacles();
 
-final int SHIP_AMT = 20;
+Goal gul; 
+
+final int SHIP_AMT = 100;
 
 void setup()
 {
   size(500, 500);
   surface.setTitle("Bots Vs. Cancer");
   surface.setResizable(true);
+ 
+  gul = new Goal(width / 2, 100, 25, #aaaaaa);
   
   for(int i = 0; i < SHIP_AMT; i++)
   {
@@ -24,6 +28,7 @@ void draw()
   
   fill(200);
   
+  gul.show();
   obs.show();
   
   for(int i = 0; i < pop.getSize(); i++)
